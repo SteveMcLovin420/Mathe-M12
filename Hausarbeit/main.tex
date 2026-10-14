@@ -1,0 +1,251 @@
+% START: Metadaten ersetzen, dann die kommentierten Beispielabschnitte ändern.
+% Bauen: im Repository-Hauptordner `make hausarbeit` (siehe README.md).
+\documentclass[12pt,a4paper,ngerman]{scrartcl}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx,booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[authoryear,round]{natbib}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+\AtBeginDocument{\renewcommand{\refname}{Literaturverzeichnis}}
+% Eigene Mathematik-Umgebungen: Nummerierung erfolgt pro Abschnitt.
+\newtheorem{satz}{Satz}[section]
+\theoremstyle{definition}
+\newtheorem{definition}[satz]{Definition}
+\newtheorem{beispiel}[satz]{Beispiel}
+% BEARBEITEN: wiederverwendbare Angaben; keine Namen im Dokument suchen nötig.
+\newcommand{\arbeitstitel}{Quadratische Funktionen im Mathematikunterricht}
+\newcommand{\personA}{Vorname Nachname 1}
+\newcommand{\personB}{Vorname Nachname 2}
+\newcommand{\kurs}{Mathematik · Kurs M12}
+\newcommand{\einrichtung}{Schule / Hochschule}
+\newcommand{\betreuung}{Name der betreuenden Lehrkraft}
+\newcommand{\abgabedatum}{Abgabedatum}
+\hypersetup{pdftitle={\arbeitstitel},pdfauthor={\personA, \personB}}
+
+\begin{document}
+\begin{titlepage}
+  \centering
+  {\Large \einrichtung\par}
+  \vspace{2cm}
+  {\huge\bfseries \arbeitstitel\par}
+  \vspace{0.7cm}
+  {\Large Gemeinsame Hausarbeit\par}
+  \vfill
+  % BEARBEITEN: ggf. Matrikelnummern ergänzen; Vorgaben der Einrichtung prüfen.
+  \begin{tabular}{rl}
+    Verfasst von: & \personA \\
+                 & \personB \\
+    Kurs:        & \kurs \\
+    Betreuung:   & \betreuung \\
+    Abgabe:      & \abgabedatum
+  \end{tabular}
+  \vspace{1.5cm}
+\end{titlepage}
+
+\pagenumbering{roman}
+\section*{Kurzfassung}
+% BEARBEITEN: etwa 100--150 Wörter zu Frage, Vorgehen und Ergebnis.
+Diese Vorlage zeigt an quadratischen Funktionen grundlegende Elemente
+einer wissenschaftlichen Hausarbeit: Fragestellung, mathematische Argumentation,
+Unterrichtsplanung und Quellenarbeit. Die Beispiele dienen dem Ausprobieren;
+sie sind durch die eigene Untersuchung und deren Ergebnisse zu ersetzen.
+\tableofcontents
+% OPTIONAL: erst bei mehreren Abbildungen/Tabellen sinnvoll; auskommentieren.
+% \listoffigures
+% \listoftables
+\clearpage
+\pagenumbering{arabic}
+
+\section{Einleitung und Fragestellung}
+\label{sec:einleitung}
+% BEARBEITEN: Motivation, Eingrenzung, Frage und Aufbau der Arbeit erläutern.
+Wie können Lernende Nullstellen quadratischer Funktionen rechnerisch bestimmen
+und grafisch deuten? Die Beispielstunde verbindet eine gemeinsame Herleitung
+an der Tafel mit einer anschließenden Partneraufgabe.
+
+% FORMAT: Leerzeile beginnt einen neuen Absatz; nicht überall \\ verwenden.
+\textbf{Fettdruck} hebt sparsam einen Begriff hervor; \emph{Hervorhebung}
+betont eine Formulierung. Sonderzeichen schreiben: \%, \&, \_, \#.
+Eine Fußnote\footnote{Fußnoten eignen sich für ergänzende Hinweise.
+Quellen zu tragenden Aussagen gehören unmittelbar an die betreffende Stelle.}
+zeigt eine optionale Ergänzung.
+
+\section{Mathematische Grundlagen}
+\label{sec:grundlagen}
+% QUELLEN: \citet nennt den Autor im Satz; \citep setzt Autor/Jahr in Klammern.
+Ein Beispiel für einen Literaturverweis im Satz: \citet{spivak2008}
+behandelt Grundlagen der Analysis. Die folgenden Rechnungen sind eigene
+Minimalbeispiele und kein wörtliches Zitat aus diesem Buch.
+
+\begin{definition}[Nullstelle]
+  Eine Zahl \(x_0\in\mathbb{R}\) heißt Nullstelle einer Funktion
+  \(f\colon\mathbb{R}\to\mathbb{R}\), wenn \(f(x_0)=0\).
+\end{definition}
+
+% FORMEL: equation wird nummeriert; equation* oder \[...\] ohne Nummer.
+\begin{equation}
+  f(x)=ax^2+bx+c, \qquad a\neq 0.
+  \label{eq:quadratisch}
+\end{equation}
+Mit \verb|\eqref{eq:quadratisch}| verweist man automatisch auf
+Gleichung~\eqref{eq:quadratisch}. \verb|\label| steht hinter der Nummernquelle,
+bei Abbildungen und Tabellen also hinter \verb|\caption|.
+
+\begin{satz}[Nullstellenformel]
+  Für \(\Delta=b^2-4ac\geq 0\) liegen die reellen Nullstellen von
+  \eqref{eq:quadratisch} bei
+  \[
+    x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}.
+  \]
+  Bei \(\Delta=0\) fallen beide Werte zusammen; bei \(\Delta<0\)
+  gibt es keine reellen Nullstellen.
+\end{satz}
+\begin{proof}
+  % align richtet Zeilen an & aus. \\ beginnt eine neue Rechenzeile.
+  Durch quadratische Ergänzung erhält man
+  \begin{align*}
+    ax^2+bx+c=0
+      &\iff x^2+\frac{b}{a}x=-\frac{c}{a} \\
+      &\iff \left(x+\frac{b}{2a}\right)^2
+              =\frac{b^2-4ac}{4a^2}.
+  \end{align*}
+  Für nichtnegative Diskriminante liefert Wurzelziehen die angegebenen Werte
+  (das Vorzeichenpaar berücksichtigt auch negatives \(a\)). Für negative
+  Diskriminante kann das Quadrat einer reellen Zahl die rechte Seite nicht erreichen.
+\end{proof}
+
+\begin{beispiel}
+  Für \(f(x)=x^2-4x+3=(x-1)(x-3)\) folgt aus der Nullproduktregel
+  \(x_1=1\) und \(x_2=3\). Die Probe ergibt \(f(1)=f(3)=0\).
+\end{beispiel}
+
+\subsection{Abbildungen und Tabellen}
+% ABBILDUNG: LaTeX darf figure/table verschieben; [htbp] sind Platzierungswünsche.
+\begin{figure}[htbp]
+  \centering
+  % BEARBEITEN: Ausdruck in addplot, Achsen und Beschriftung ändern.
+  \begin{tikzpicture}
+    \begin{axis}[width=0.75\textwidth,height=6cm,
+      axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+      xmin=0,xmax=4,ymin=-1.5,ymax=3.5,grid=major,
+      xtick={0,1,2,3,4},ytick={-1,0,1,2,3}]
+      \addplot[blue!60!black,thick,domain=0:4,samples=60]{x^2-4*x+3};
+      \addplot[only marks,mark=*] coordinates {(1,0) (3,0)};
+    \end{axis}
+  \end{tikzpicture}
+  \caption{Graph von \(f(x)=x^2-4x+3\) mit markierten Nullstellen.
+    Quelle: eigene Darstellung.}
+  \label{fig:parabel}
+\end{figure}
+Abbildung~\ref{fig:parabel} ergänzt die Rechnung. Externe Bilder können statt
+der TikZ-Grafik mit diesem Befehl eingefügt werden:
+\begin{quote}
+  \small\verb|\includegraphics[width=0.7\textwidth]{bild.pdf}|
+\end{quote}
+Die Datei liegt dann neben \texttt{main.tex}; Urheber,
+Quelle und gegebenenfalls Lizenz gehören in die Bildunterschrift.
+
+\begin{table}[htbp]
+  \centering
+  \caption{Wertetabelle zum Beispiel; eigene Berechnung.}
+  \label{tab:werte}
+  \begin{tabular}{@{}rrrrr@{}}
+    \toprule
+    \(x\) & 0 & 1 & 2 & 3 \\
+    \midrule
+    \(f(x)\) & 3 & 0 & -1 & 0 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+Tabelle~\ref{tab:werte} enthält ausgewählte Funktionswerte.
+
+\section{Didaktische Planung der Unterrichtsstunde}
+% BEARBEITEN: Klassenstufe, Voraussetzungen, Lernziele, Methoden und Zeiten.
+Vorausgesetzt werden der Umgang mit Termen und das Ablesen von Koordinaten.
+Als Lernziel bestimmen die Lernenden Nullstellen eines faktorisierbaren
+quadratischen Terms und erklären deren Bedeutung am Graphen.
+\begin{enumerate}
+  \item \textbf{Einstieg (5 Minuten):} Vorwissen zu Nullstellen aktivieren.
+  \item \textbf{Erarbeitung (10 Minuten):} Rechenweg gemeinsam an der Tafel entwickeln.
+  \item \textbf{Übung (15 Minuten):} Aufgaben in Paaren lösen und kontrollieren.
+  \item \textbf{Sicherung (10 Minuten):} Lösungen vergleichen und Fehler besprechen.
+  \item \textbf{Abschluss (5 Minuten):} Nullproduktregel in eigenen Worten erklären.
+\end{enumerate}
+Die Anregung, einen Lösungsweg zu planen und das Ergebnis rückblickend zu prüfen,
+lässt sich mit der Problemlöseheuristik bei \citet{polya1945} verbinden.
+% Vor Abgabe konkrete Fundstelle in eurer Ausgabe prüfen und ergänzen:
+% \citep[vgl.][S.~23--25]{polya1945} (Seiten hier nur Syntax-Beispiel!).
+
+\subsection{Zusammenarbeit zu zweit}
+% BEARBEITEN: tatsächliche Beiträge nennen; beide lesen die gesamte Endfassung.
+\begin{itemize}
+  \item \personA: Beispielzuständigkeit für Einstieg und Literaturrecherche.
+  \item \personB: Beispielzuständigkeit für Herleitung und Aufgabenentwicklung.
+  \item Gemeinsam: Unterrichtsplanung, Überarbeitung und Quellenkontrolle.
+\end{itemize}
+
+\section{Wissenschaftliches Zitieren: Minimalbeispiele}
+% Nicht einfach ein Literaturverzeichnis anhängen: Aussagen im Text belegen!
+Ein Verweis in Klammern lautet \citep{polya1945}; mehrere Quellen zusammen
+werden mit \verb|\citep{polya1945,spivak2008}| gesetzt
+\citep{polya1945,spivak2008}. Die Quellenverwaltung ist unabhängig von der
+Formulierung eures Texts.
+
+Ein direktes Zitat steht in \enquote{deutschen Anführungszeichen} und braucht
+einen überprüften Wortlaut sowie eine genaue Fundstelle. Diese Formulierung
+zeigt nur die Schreibweise der Anführungszeichen, kein Literaturzitat.
+Für eine Seitenangabe lautet die Syntax:
+\begin{quote}
+  \small\verb|\citep[S.~23]{schluessel}|
+\end{quote}
+Für ein indirektes Zitat mit Seitenbereich:
+\begin{quote}
+  \small\verb|\citep[vgl.][S.~23--25]{schluessel}|
+\end{quote}
+% BEARBEITEN: echten Schlüssel und tatsächlich geprüfte Seiten einsetzen.
+Bei Internetquellen Autor/Organisation, Seitentitel, URL und Abrufdatum
+erfassen; ein auskommentiertes Muster steht in \texttt{literatur.bib}.
+
+\section{Fazit und Reflexion}
+% BEARBEITEN: Frage aus Einleitung beantworten, Grenzen und Ausblick nennen.
+Das Beispiel verbindet algebraische Rechnung, Graph und Ergebniskontrolle.
+In der eigenen Arbeit ist zu reflektieren, welche Lernziele erreicht wurden
+und woran dies erkennbar war. Vor einer tatsächlich gehaltenen Stunde keine
+Beobachtungen oder Lernergebnisse als durchgeführt ausgeben.
+
+% LITERATUR: Nur zitierte Einträge erscheinen automatisch. Kein manuelles Tippen.
+\clearpage
+\addcontentsline{toc}{section}{Literaturverzeichnis}
+\bibliographystyle{plainnat}
+\bibliography{literatur}
+
+\clearpage
+\appendix
+\section{Aufgabe und Musterlösung}
+% BEARBEITEN: ergänzendes Material; im Haupttext mit \ref{sec:anhang} verweisen.
+\label{sec:anhang}
+Bestimmt die Nullstellen von \(g(x)=x^2-5x+6\).
+\[
+  g(x)=(x-2)(x-3)=0 \iff x=2\ \text{oder}\ x=3.
+\]
+Die Probe ergibt \(g(2)=0\) und \(g(3)=0\).
+
+% OPTIONAL: Erklärung nur verwenden, wenn gefordert, und dann den verbindlichen
+% Wortlaut eurer Einrichtung übernehmen (z. B. auch Vorgaben zu KI-Nutzung).
+% \clearpage
+% \section*{Eigenständigkeitserklärung}
+% [Hier den vorgeschriebenen und für euch zutreffenden Wortlaut einsetzen.]
+% \vspace{1cm}
+% Ort, Datum: \hrulefill
+% \vspace{1cm}
+% \personA: \hrulefill \qquad \personB: \hrulefill
+\end{document}

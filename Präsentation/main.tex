@@ -1,0 +1,204 @@
+% START: Titel/Namen unten ersetzen, dann die Folien im Dokument bearbeiten.
+% Alles hinter % ist ein Kommentar und erscheint nicht im PDF.
+% Bauen: im Repository-Hauptordner `make praesentation` (siehe README.md).
+\documentclass[aspectratio=169,11pt]{beamer}
+% Für einen Ausdruck ohne Einblende-Schritte: oben zusätzlich `handout` setzen.
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{lmodern}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx,booktabs}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepackage[authoryear,round]{natbib} % Quellen: Autor und Jahr
+\usepackage{csquotes} % Deutsche Anführungszeichen mit \enquote{Text}
+
+% DESIGN: Madrid ist ein schlichtes Beamer-Design; Farben hier ändern.
+\usetheme{Madrid}
+\definecolor{matheblau}{RGB}{25,65,100}
+\setbeamercolor{structure}{fg=matheblau}
+\setbeamertemplate{navigation symbols}{}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{bibliography item}[text]
+% Sprecherhinweise stehen im Code. Für einen eigenen Notizen-Ausdruck ersetzen
+% durch \setbeameroption{show only notes}; anschließend separat kompilieren.
+\setbeameroption{hide notes}
+
+% BEARBEITEN: gemeinsamer Titel, beide vollständigen Namen, Kurs und Datum.
+\title[Quadratische Funktionen]{Quadratische Funktionen}
+\subtitle{Beispielvorlage für eine Mathematik-Unterrichtsstunde}
+\author[Name 1 \& Name 2]{Vorname Nachname 1 \and Vorname Nachname 2}
+\institute[M12]{Schule / Hochschule · Mathematik · Kurs M12}
+\date[Datum]{Abgabedatum / Datum der Unterrichtsstunde}
+
+\begin{document}
+\begin{frame}
+  \titlepage
+  \note{Person 1: begrüßen. Person 2: Leitfrage und Ablauf vorstellen.}
+\end{frame}
+
+\begin{frame}{Unser Weg durch die Stunde}
+  \tableofcontents
+  % BEARBEITEN: Abschnitte unten ändern; diese Übersicht passt sich an.
+\end{frame}
+
+\section{Einstieg und Lernziele}
+\begin{frame}{Leitfrage und Lernziele}
+  % BEARBEITEN: konkretes Thema, Vorwissen und überprüfbare Lernziele.
+  \begin{block}{Leitfrage}
+    Wie finden wir die Nullstellen einer quadratischen Funktion?
+  \end{block}
+  Nach der Stunde könnt ihr \ldots
+  \begin{itemize}
+    \item einen Funktionsgraphen mit seiner Gleichung verbinden,
+    \item Nullstellen durch Faktorisieren bestimmen,
+    \item das Ergebnis rechnerisch und grafisch überprüfen.
+  \end{itemize}
+  \note{Person 1: Vorwissen abfragen: Was bedeutet eine Nullstelle?}
+\end{frame}
+
+\begin{frame}{Stundenplan und Aufgabenverteilung}
+  % BEARBEITEN: Beispiel für 45 Minuten; an euren Zeitrahmen anpassen.
+  \small
+  \begin{tabular}{@{}p{1.4cm}p{4.2cm}p{5.3cm}@{}}
+    \toprule
+    Zeit & Phase & Zuständigkeit / Medium \\
+    \midrule
+    5 min & Einstieg und Vorwissen & Person 1 · Folie / Gespräch \\
+    10 min & Gemeinsame Erarbeitung & Person 2 · Tafel \\
+    15 min & Übung in Paaren & beide · Aufgabenfolie \\
+    10 min & Ergebnisse sichern & Person 1 · Tafel, Person 2 moderiert \\
+    5 min & Lernzielkontrolle & Person 2 · Abschlussfrage \\
+    \bottomrule
+  \end{tabular}
+  \note{Die jeweils andere Person beobachtet Zeit und Fragen aus der Gruppe.}
+\end{frame}
+
+\section{Erarbeitung an der Tafel}
+\begin{frame}{Mathematische Grundlage}
+  % INLINE-MATHE: \( ... \); abgesetzte Formel: \[ ... \].
+  Eine quadratische Funktion hat die Form
+  \[
+    f(x)=ax^2+bx+c, \qquad a,b,c\in\mathbb{R},\quad a\neq 0.
+  \]
+  \begin{block}{Definition: Nullstelle}
+    Eine Zahl \(x_0\) heißt Nullstelle von \(f\), wenn \(f(x_0)=0\).
+  \end{block}
+  % QUELLEN: Schlüssel muss in literatur.bib existieren. Seiten ergänzen,
+  % sobald ihr die verwendete Ausgabe und die betreffende Stelle geprüft habt.
+  \small Hintergrund zur Analysis: \citep{spivak2008}.
+  \note{Person 2: Definition an die Tafel schreiben. Beispiel selbst herleiten.}
+\end{frame}
+
+\begin{frame}{Tafelphase: gemeinsam herleiten}
+  % BEARBEITEN: Diese Folie ist der Arbeitsauftrag. Erst rechnen lassen,
+  % dann die nächste Folie zur Ergebnissicherung öffnen.
+  \begin{block}{Arbeitsauftrag}
+    Bestimmt die Nullstellen von \(f(x)=x^2-4x+3\).
+  \end{block}
+  \begin{enumerate}
+    \item Was bedeutet \(f(x)=0\) für den Graphen?
+    \item Welche zwei Zahlen haben Summe \(4\) und Produkt \(3\)?
+    \item Schreibt \(f(x)\) als Produkt und nutzt die Nullproduktregel.
+  \end{enumerate}
+  \medskip
+  \textbf{Tafelaufteilung:} links Begriff, Mitte Rechnung, rechts Skizze.
+  \note{Person 2 schreibt, Person 1 sammelt Vorschläge. Die Rechnung zunächst
+    ohne Projektionslösung entwickeln; Fehler gemeinsam besprechen.}
+\end{frame}
+
+\begin{frame}{Ergebnissicherung: Tafelbild in drei Schritten}
+  % \pause blendet den nächsten Teil erst nach einem Klick ein.
+  % Entfernen, wenn alles sofort sichtbar sein soll. Overlays sind keine Videos.
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.46\textwidth}
+      \textbf{Rechnung}
+      \begin{align*}
+        0 &= x^2-4x+3 \\
+          &= (x-1)(x-3)
+      \end{align*}
+      \pause
+      Also: \(x_1=1\) oder \(x_2=3\).
+      \medskip
+
+      \textbf{Probe:} \(f(1)=0\), \(f(3)=0\).
+    \end{column}
+    \begin{column}{0.50\textwidth}
+      % GRAFIK: Formel in addplot und Achsengrenzen passend ändern.
+      \begin{tikzpicture}
+        \begin{axis}[width=\linewidth,height=4.5cm,
+          axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
+          xmin=0,xmax=4,ymin=-1.5,ymax=3.5,grid=major,
+          xtick={0,1,2,3,4},ytick={-1,0,1,2,3}]
+          \addplot[matheblau,thick,domain=0:4,samples=60]{x^2-4*x+3};
+          \addplot[only marks,mark=*,mark size=2pt] coordinates {(1,0) (3,0)};
+        \end{axis}
+      \end{tikzpicture}
+      \scriptsize Eigene Darstellung; Beispiel selbst berechnet.
+    \end{column}
+  \end{columns}
+\end{frame}
+
+\section{Üben und sichern}
+\begin{frame}{Partneraufgabe und kurze Lernzielkontrolle}
+  % BEARBEITEN: Zeit, Schwierigkeit und Arbeitsauftrag an Lerngruppe anpassen.
+  \begin{exampleblock}{Partnerarbeit · 5 Minuten}
+    Bestimmt die Nullstellen von \(g(x)=x^2-5x+6\).
+    Begründet jeden Schritt und prüft eure Lösung.
+  \end{exampleblock}
+  \begin{itemize}
+    \item Person A rechnet, Person B erklärt und kontrolliert.
+    \item Tauscht anschließend die Rollen.
+  \end{itemize}
+  \alert{Abschlussfrage:} Warum ist \(uv=0\) nur möglich, wenn mindestens
+  einer der beiden Faktoren null ist?
+  \note{Die Rollen A/B betreffen die Lernenden, nicht die Vortragenden.
+    Musterlösung auf der nächsten Folie erst nach der Arbeitsphase zeigen.}
+\end{frame}
+
+\begin{frame}{Musterlösung und Merksatz}
+  \begin{align*}
+    g(x)&=x^2-5x+6=(x-2)(x-3), \\
+    g(x)=0 &\iff x=2\ \text{oder}\ x=3.
+  \end{align*}
+  \begin{block}{Merksatz}
+    Nullstellen sind die \(x\)-Koordinaten der Schnittpunkte des Graphen
+    mit der \(x\)-Achse. Nicht jede quadratische Funktion hat reelle Nullstellen.
+  \end{block}
+  \note{Optionales Gegenbeispiel an der Tafel: h(x)=x^2+1.}
+\end{frame}
+
+\section{Quellen}
+\begin{frame}{Quellen im Vortrag sichtbar machen}
+  % QUELLEN-MINIBEISPIELE: Text hier später durch eure fachlichen Aussagen
+  % ersetzen. Keine Seitenzahlen erfinden; geprüfte Fundstellen verwenden.
+  \begin{itemize}
+    \item Autor im Satz: \citet{polya1945} behandelt heuristisches Problemlösen.
+    \item Quelle in Klammern: Hintergrund zur Analysis \citep{spivak2008}.
+    \item Seitenangabe: im Code z.\,B. \texttt{\textbackslash citep[S.~23]\{schluessel\}}.
+    \item Direkte Zitate: \enquote{Wortlaut} plus Quelle und genaue Fundstelle.
+  \end{itemize}
+  \small Die Bücher sind reale Beispielquellen; die Unterrichtsplanung und
+  Rechnungen dieser Vorlage sind eigene Beispiele. Vor Abgabe relevante
+  Literatur auswählen und tatsächlich verwendete Stellen prüfen.
+\end{frame}
+
+% LITERATUR: BibTeX erzeugt die Liste automatisch aus den zitierten Einträgen.
+% Neue Quelle: Eintrag in literatur.bib + \citep{schluessel} auf der Folie.
+% allowframebreaks verteilt eine längere Liste automatisch auf weitere Folien.
+\begin{frame}[allowframebreaks]{Literaturverzeichnis}
+  \footnotesize
+  \bibliographystyle{plainnat}
+  \bibliography{literatur}
+\end{frame}
+
+% KOPIERVORLAGE für zusätzliche Folien (Prozentzeichen entfernen):
+% \begin{frame}{Euer Folientitel}
+%   Euer Inhalt, z. B. \(a^2+b^2=c^2\).
+%   \note{Person 1/2: Hinweis nur für euch.}
+% \end{frame}
+% BILDDATEI: Bild im Ordner ablegen, dann z. B.:
+% \includegraphics[width=0.7\textwidth]{bild.pdf}
+% Direkt daneben Urheber, Quelle (\citep{...}) und ggf. Lizenz nennen.
+\end{document}

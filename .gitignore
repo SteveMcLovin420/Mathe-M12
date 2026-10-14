@@ -1,0 +1,14 @@
+# LaTeX-Hilfsdateien und lokal erzeugte PDFs
+**/build/
+*.aux
+*.bbl
+*.blg
+*.fdb_latexmk
+*.fls
+*.log
+*.nav
+*.out
+*.snm
+*.synctex.gz
+*.toc
+*.vrb

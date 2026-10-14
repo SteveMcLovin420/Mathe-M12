@@ -1,0 +1,130 @@
+# Mathematik: Präsentation und Hausarbeit zu zweit
+
+Zwei unabhängig bearbeitbare LaTeX-Vorlagen mit dem **austauschbaren
+Beispielthema quadratische Funktionen**. Beide verwenden deutsche Sprache,
+Autor-Jahr-Zitate und ein automatisch erzeugtes Literaturverzeichnis.
+Kommentare mit `% BEARBEITEN`, `% QUELLEN` usw. erklären die Änderungen direkt
+im Code. Ein Kommentar beginnt mit `%` und erscheint nicht im PDF.
+
+## Schnellstart
+
+1. In `Präsentation/main.tex` Titel, beide Namen, Einrichtung und Datum ändern.
+2. In `Hausarbeit/main.tex` die Angaben bei `\newcommand` am Anfang ersetzen.
+3. Beispielinhalte bearbeiten und eigene Quellen in der jeweiligen
+   `literatur.bib` ergänzen. Nur tatsächlich geprüfte Literatur verwenden.
+4. Im Repository-Hauptordner im Terminal ausführen:
+
+```sh
+make                 # Beide PDFs erstellen
+make praesentation   # Nur die Präsentation
+make hausarbeit      # Nur die Hausarbeit
+```
+
+Ergebnisse: `Präsentation/build/main.pdf` und `Hausarbeit/build/main.pdf`.
+PDFs und Hilfsdateien im `build`-Ordner werden nicht in Git aufgenommen.
+`make clean` entfernt die erzeugten Dateien. Zum Abgeben PDFs separat exportieren.
+
+## Was ist enthalten?
+
+| Präsentation (Beamer, 16:9) | Hausarbeit (A4) |
+| --- | --- |
+| Titelfolie mit zwei Namen, Gliederung | Gemeinsames Titelblatt, Kurzfassung, Inhaltsverzeichnis |
+| Lernziele und 45-Minuten-Stundenplan | Einleitung, Fragestellung und didaktische Planung |
+| Tafelauftrag, schrittweise Ergebnissicherung | Definition, Satz, Beweis, nummerierte Formeln |
+| Funktionsgraph, Partneraufgabe, Musterlösung | Funktionsgraph, Tabelle, Querverweise, Fußnote |
+| Sprecherhinweise, Quellenfolien | Zusammenarbeit, Fazit, Literaturverzeichnis, Anhang |
+
+In der Tafelphase zunächst mit der Gruppe an der echten Tafel rechnen, dann die
+Sicherungsfolie zeigen. `\pause` blendet Folieninhalte schrittweise ein. Für einen
+Ausdruck zusätzlich die Klassenoption `handout` setzen (oben in `main.tex`).
+Die `\note{...}`-Hinweise erscheinen standardmäßig nicht auf den Folien;
+`\setbeameroption{show only notes}` erzeugt einen separaten Notizenausdruck.
+Eine neue `frame`-Umgebung erzeugt eine neue Folie.
+
+## Quellen setzen – Schritt für Schritt
+
+Jeder Ordner hat eine eigene `literatur.bib`, sodass sich jedes Dokument allein
+weitergeben oder in Overleaf hochladen lässt. Gemeinsame Einträge in beiden
+Dateien gleich halten. Die Vorlage nutzt **natbib + BibTeX**, nicht Biber.
+
+1. In `literatur.bib` einen Eintrag anlegen. Kopiermuster für Buch, Artikel und
+   Webseite stehen dort als Kommentare. Der Schlüssel (z. B. `polya1945`) ist
+   frei wählbar, muss eindeutig sein und exakt zum Zitat passen.
+2. Im Text die passende Zitierform verwenden:
+
+```tex
+\citet{polya1945} beschreibt ...          % Autor (Jahr) im Satz
+... wird beschrieben \citep{polya1945}.  % (Autor, Jahr)
+\citep[S.~23]{polya1945}                 % Quelle mit Seite
+\citep[vgl.][S.~23--25]{polya1945}        % Indirektes Zitat mit Seiten
+\citep{polya1945,spivak2008}              % Mehrere Quellen
+\enquote{Geprüfter Wortlaut} ...         % Direktes Zitat + Quelle/Fundstelle
+```
+
+Die Seitenzahlen oben zeigen nur die Syntax; sie sind **keine geprüften
+Fundstellen**. Direkte Zitate wortgetreu übernehmen, indirekte Aussagen mit
+eigenen Worten formulieren und ebenfalls belegen. Quellen unmittelbar auf der
+betreffenden Folie bzw. bei Abbildungen nennen. Ein Literaturverzeichnis allein
+ersetzt keine Belege im Text. Webseiten benötigen eine konkrete URL und ein
+Abrufdatum. Vorgaben eurer Einrichtung zum Zitierstil gehen vor; `plainnat`
+ist hier ein allgemeiner Ausgangspunkt, kein zugesicherter Spezialstil.
+
+3. `make` erneut ausführen. `latexmk` startet automatisch PDFLaTeX, BibTeX und
+   nötige Folgeläufe. Nur zitierte Quellen erscheinen in der Liste.
+   `\nocite{schluessel}` nimmt gezielt eine weitere Quelle auf;
+   `\nocite{*}` nimmt alle Einträge auf (für die Endfassung nur bewusst nutzen).
+   Nicht die erzeugten `.bbl`-Dateien bearbeiten.
+
+## Kleine LaTeX-Merkhilfe
+
+| Zweck | Beispiel |
+| --- | --- |
+| Mathematik im Satz | `\(x^2+1\)` |
+| Formel ohne Nummer | `\[x_{1,2}=\frac{-b\pm\sqrt{b^2-4ac}}{2a}\]` |
+| Formel mit Nummer | `\begin{equation} ... \label{eq:name}\end{equation}` |
+| Auf Formel verweisen | `\eqref{eq:name}` |
+| Auf Abschnitt/Bild verweisen | `\ref{sec:name}` / `\ref{fig:name}` |
+| Aufzählung | `\begin{itemize}\item Punkt\end{itemize}` |
+| Abbildung einfügen | `\includegraphics[width=0.7\textwidth]{bild.pdf}` |
+| Deutsches Zitat | `\enquote{Text}` |
+| Sonderzeichen als Text | `\%`, `\&`, `\_`, `\#` |
+
+Absätze durch eine Leerzeile trennen. `\\` ist in Tabellen und `align` ein
+Zeilenwechsel; nicht als Ersatz für Absätze verwenden. Bilddateien neben der
+jeweiligen `main.tex` ablegen. TikZ/PGFPlots erzeugt die Beispielgraphen direkt
+aus einer Formel, sodass keine externen Bilddateien nötig sind.
+
+## Gemeinsam arbeiten und abgeben
+
+Beide Namen stehen auf den Titelblättern. Zuständigkeiten sind in der
+Unterrichtsplanung und im Abschnitt „Zusammenarbeit“ vorbereitet. Rollen und
+Zeitplan anpassen, die gesamte Arbeit gegenseitig lesen und Quellen gemeinsam
+prüfen. Umfang, Layout und gegebenenfalls Eigenständigkeitserklärung nach den
+Vorgaben eurer Lehrkraft ausrichten; eine optionale Erklärung ist im Code
+vorbereitet. Beispieltexte und Platzhalter vor der Abgabe ersetzen.
+
+## Umgebung und andere Rechner
+
+Benötigt: TeX Live (oder MiKTeX), PDFLaTeX, BibTeX, `latexmk`; für die Kurzbefehle
+auch `make`. Passende Debian/Ubuntu-Pakete:
+`texlive-latex-base texlive-latex-recommended texlive-latex-extra texlive-pictures
+texlive-fonts-recommended texlive-lang-german latexmk make`.
+
+In dieser Cloud-Umgebung wurde das fehlende deutsche Sprachpaket außerhalb des
+Repositories unter `/workspace/.texlive-german` ergänzt. `make` aktiviert es
+automatisch samt lokalem PDFLaTeX-Format mit deutscher Silbentrennung.
+Auf einem Rechner mit vollständiger LaTeX-Installation benötigt das Repository
+keine solchen lokalen Pfade.
+
+Ohne `make`: im gewünschten Dokumentordner ausführen (in dieser Cloud vorher die
+lokalen TeX-Variablen aktivieren, siehe gespeicherte Startanleitung;
+`make` erledigt dies automatisch):
+
+```sh
+latexmk -pdf -interaction=nonstopmode -halt-on-error -outdir=build main.tex
+```
+
+Overleaf: Dateien **eines** Dokumentordners als Projekt hochladen,
+`main.tex` als Hauptdokument und pdfLaTeX als Compiler wählen.
+Bei `?` statt Quellenangaben Schlüssel prüfen und neu bauen; bei
+`File ... not found` das genannte Paket bzw. die Bilddatei ergänzen.

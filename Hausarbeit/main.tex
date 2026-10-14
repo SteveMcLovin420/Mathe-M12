@@ -5,12 +5,27 @@
 \usepackage[utf8]{inputenc}
 \usepackage[ngerman]{babel}
 \usepackage{lmodern}
-\usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[a4paper,margin=2.5cm,headheight=18pt]{geometry}
 \usepackage[bottom]{footmisc} % Fußnoten unten auf der zugehörigen Seite
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx,booktabs}
+\usepackage{xcolor}
+\usepackage{microtype}
+% DESIGN: ruhiger Textsatz; Akzentfarbe passend zum CAU-Präsentationsdesign.
+\definecolor{akzent}{RGB}{0,135,60}
+\definecolor{textgrau}{RGB}{75,85,80}
+\addtokomafont{section}{\color{akzent}}
+\addtokomafont{subsection}{\color{textgrau}}
+\setkomafont{captionlabel}{\sffamily\bfseries\color{textgrau}}
+\usepackage[automark,headsepline]{scrlayer-scrpage}
+\clearpairofpagestyles
+\ihead{\headmark}
+\ohead{\textsf{M12}}
+\cfoot*{\pagemark}
+\setkomafont{pageheadfoot}{\normalfont\sffamily\footnotesize\color{textgrau}}
+\pagestyle{scrheadings}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage[authoryear,round]{natbib}
@@ -37,29 +52,62 @@
 \newcommand{\personA}{Vorname Nachname 1}
 \newcommand{\personB}{Vorname Nachname 2}
 \newcommand{\kurs}{Mathematik · Kurs M12}
-\newcommand{\einrichtung}{Schule / Hochschule}
+\newcommand{\einrichtung}{Justus-Liebig-Universität Gießen}
 \newcommand{\betreuung}{Name der betreuenden Lehrkraft}
 \newcommand{\abgabedatum}{Abgabedatum}
+% LOGO: Datei neben main.tex ablegen und hier den Dateinamen ändern.
+% PDF/PNG/JPG möglich; ohne Datei erscheint ein neutraler Platzhalter.
+\newcommand{\logodatei}{uni-logo.png}
+\newcommand{\hochschullogo}{%
+  \IfFileExists{\logodatei}{%
+    \includegraphics[width=4cm,height=2cm,keepaspectratio]{\logodatei}%
+  }{%
+    \begingroup
+    \setlength{\fboxsep}{10pt}%
+    \fcolorbox{akzent!30}{akzent!4}{%
+      \parbox[c][1.3cm][c]{3.2cm}{\centering\sffamily\small
+        \textcolor{akzent}{Universitätslogo}\par
+        \textcolor{textgrau}{\scriptsize Platzhalter}}}%
+    \endgroup
+  }%
+}
 \hypersetup{pdftitle={\arbeitstitel},pdfauthor={\personA, \personB}}
 
 \begin{document}
 \begin{titlepage}
-  \centering
-  {\Large \einrichtung\par}
-  \vspace{2cm}
-  {\huge\bfseries \arbeitstitel\par}
-  \vspace{0.7cm}
-  {\Large Gemeinsame Hausarbeit\par}
+  \thispagestyle{empty}
+  \singlespacing
+  \noindent
+  \begin{minipage}[c]{0.60\textwidth}
+    {\sffamily\bfseries\large\einrichtung\par}
+    \medskip
+    {\sffamily\color{textgrau}\kurs\par}
+  \end{minipage}\hfill
+  \begin{minipage}[c]{0.35\textwidth}
+    \raggedleft\hochschullogo
+  \end{minipage}
+
+  \vspace{1cm}
+  {\color{akzent}\hrule height 1.5pt}
+  \vspace{2.1cm}
+  {\sffamily\bfseries\color{akzent}\large HAUSARBEIT\par}
+  \vspace{0.6cm}
+  {\raggedright\sffamily\bfseries\fontsize{29}{35}\selectfont
+    \arbeitstitel\par}
+  \vspace{0.8cm}
+  {\sffamily\large\color{textgrau}Gemeinsam erarbeitet von zwei Personen\par}
   \vfill
   % BEARBEITEN: ggf. Matrikelnummern ergänzen; Vorgaben der Einrichtung prüfen.
-  \begin{tabular}{rl}
-    Verfasst von: & \personA \\
-                 & \personB \\
-    Kurs:        & \kurs \\
-    Betreuung:   & \betreuung \\
-    Abgabe:      & \abgabedatum
-  \end{tabular}
-  \vspace{1.5cm}
+  {\renewcommand{\arraystretch}{1.45}
+  \begin{tabular}{@{}p{3.4cm}p{11cm}@{}}
+    \textsf{Verfasst von} & \personA \\
+                         & \personB \\
+    \textsf{Kurs}        & \kurs \\
+    \textsf{Betreuung}   & \betreuung \\
+    \textsf{Abgabe}      & \abgabedatum
+  \end{tabular}\par}
+  \vspace{1cm}
+  {\color{akzent!35}\hrule height 0.6pt}
 \end{titlepage}
 
 \pagenumbering{roman}
@@ -148,7 +196,7 @@ bei Abbildungen und Tabellen also hinter \verb|\caption|.
       axis lines=middle,xlabel={$x$},ylabel={$f(x)$},
       xmin=0,xmax=4,ymin=-1.5,ymax=3.5,grid=major,
       xtick={0,1,2,3,4},ytick={-1,0,1,2,3}]
-      \addplot[blue!60!black,thick,domain=0:4,samples=60]{x^2-4*x+3};
+      \addplot[akzent,thick,domain=0:4,samples=60]{x^2-4*x+3};
       \addplot[only marks,mark=*] coordinates {(1,0) (3,0)};
     \end{axis}
   \end{tikzpicture}

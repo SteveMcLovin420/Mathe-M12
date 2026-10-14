@@ -42,6 +42,32 @@ Die `\note{...}`-Hinweise erscheinen standardmäßig nicht auf den Folien;
 `\setbeameroption{show only notes}` erzeugt einen separaten Notizenausdruck.
 Eine neue `frame`-Umgebung erzeugt eine neue Folie.
 
+## Hausarbeit: Titelblatt und Logo
+
+Die Hausarbeit hat ein gestaltetes Titelblatt mit Logo-Bereich, grünen Akzenten,
+Metadatentabelle und dezenten laufenden Abschnittsüberschriften. Der Fließtext
+bleibt in 12 pt mit eineinhalbfachem Zeilenabstand; Quellen stehen als Fußnoten.
+
+Das JLU-Logo liegt als `Hausarbeit/uni-logo.png` bei. Eine eigene Version kann
+diese Datei ersetzen. Sie wird automatisch
+mit erhaltenem Seitenverhältnis eingesetzt. Für PNG/JPG oder einen anderen Namen
+`\logodatei` am Anfang von `Hausarbeit/main.tex` ändern. Ohne Bilddatei erscheint
+ein deutlich markierter Platzhalter. Die Justus-Liebig-Universität Gießen ist bereits eingetragen. Die Hochschule wird bei `\einrichtung`
+eingetragen; Personen, Kurs und Betreuung stehen direkt daneben im Quelltext.
+
+## Präsentationsdesign: CAU
+
+Die Präsentation verwendet das **CAU Beamer Theme** von Zhuo Yue mit grünem
+Titelbereich, Abschnittsnavigation samt Folienpunkten und einer schmalen Fußzeile.
+Die Folien bleiben im Format 16:9; deutsche Texte und Quellenfußnoten werden
+weiter mit PDFLaTeX und BibTeX erstellt. Abschnittswechsel zeigen eine kurze
+Übersicht zur Orientierung.
+
+`Präsentation/CAU.sty` liegt lokal bei: Beim Hochladen nach Overleaf den ganzen
+Präsentationsordner einschließlich dieser Datei übernehmen. Die Farbe wird mit
+`\usepackage[color=CAU]{CAU}` gewählt; z. B. `CAU_SCI` ergibt eine blaue Variante.
+Herkunft, Lizenz und Anpassungen stehen in `Präsentation/CAU-QUELLE.md`.
+
 ## Quellen setzen – Schritt für Schritt
 
 Jeder Ordner hat eine eigene `literatur.bib`, sodass sich jedes Dokument allein

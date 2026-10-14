@@ -24,10 +24,18 @@
 }
 \usepackage{csquotes} % Deutsche Anführungszeichen mit \enquote{Text}
 
-% DESIGN: Madrid ist ein schlichtes Beamer-Design; Farben hier ändern.
-\usetheme{Madrid}
-\definecolor{matheblau}{RGB}{25,65,100}
-\setbeamercolor{structure}{fg=matheblau}
+% DESIGN: CAU Beamer Theme von Zhuo Yue; Herkunft/Lizenz siehe CAU-QUELLE.md.
+% Originaldesign mit CAU-Grün, Navigationspunkten und schlanker Fußzeile.
+% Alternative Farbe z. B. CAU_SCI (Blau); die Optionen stehen in CAU.sty.
+\usepackage{xkeyval}
+\usepackage[color=CAU]{CAU}
+\colorlet{matheblau}{use_color} % Auch die Funktionsgraphen in Themenfarbe.
+% Deutsche Abschnittsübersichten; zeigen den aktuellen Abschnitt hervorgehoben.
+\AtBeginSection[]{%
+  \begin{frame}{Unser Weg durch die Stunde}
+    \tableofcontents[currentsection,hideallsubsections]
+  \end{frame}
+}
 \setbeamertemplate{navigation symbols}{}
 \setbeamertemplate{caption}[numbered]
 \setbeamertemplate{bibliography item}[text]
@@ -41,7 +49,7 @@
 \title[Quadratische Funktionen]{Quadratische Funktionen}
 \subtitle{Beispielvorlage für eine Mathematik-Unterrichtsstunde}
 \author[Name 1 \& Name 2]{Vorname Nachname 1 \and Vorname Nachname 2}
-\institute[M12]{Schule / Hochschule · Mathematik · Kurs M12}
+\institute[JLU Gießen]{Justus-Liebig-Universität Gießen\\Mathematik · Kurs M12}
 \date[Datum]{Abgabedatum / Datum der Unterrichtsstunde}
 
 \begin{document}
@@ -55,7 +63,7 @@
   % BEARBEITEN: Abschnitte unten ändern; diese Übersicht passt sich an.
 \end{frame}
 
-\section{Einstieg und Lernziele}
+\section[Einstieg]{Einstieg und Lernziele}
 \begin{frame}{Leitfrage und Lernziele}
   % BEARBEITEN: konkretes Thema, Vorwissen und überprüfbare Lernziele.
   \begin{block}{Leitfrage}
@@ -87,7 +95,7 @@
   \note{Die jeweils andere Person beobachtet Zeit und Fragen aus der Gruppe.}
 \end{frame}
 
-\section{Erarbeitung an der Tafel}
+\section[Tafelphase]{Erarbeitung an der Tafel}
 \begin{frame}{Mathematische Grundlage}
   % INLINE-MATHE: \( ... \); abgesetzte Formel: \[ ... \].
   Eine quadratische Funktion hat die Form
@@ -152,7 +160,7 @@
   \end{columns}
 \end{frame}
 
-\section{Üben und sichern}
+\section[Übung]{Üben und sichern}
 \begin{frame}{Partneraufgabe und kurze Lernzielkontrolle}
   % BEARBEITEN: Zeit, Schwierigkeit und Arbeitsauftrag an Lerngruppe anpassen.
   \begin{exampleblock}{Partnerarbeit · 5 Minuten}

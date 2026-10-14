@@ -88,6 +88,15 @@ Bibliothekseintrag allein anzulegen erzeugt noch keine Fußmarke: Dafür muss
    `\nocite{*}` nimmt alle Einträge auf (für die Endfassung nur bewusst nutzen).
    Nicht die erzeugten `.bbl`-Dateien bearbeiten.
 
+## Sichtbare Zitierdemonstration
+
+Die Hausarbeit enthält eine eigene „Zitierwerkstatt“, die Präsentation vier
+Demo-Folien. Sie zeigen einzelne Seiten, Seitenbereiche, „vgl.“, die Gestaltung
+eines direkten Zitats, mehrere Quellen und Belege in Spalten. Alle dort
+verwendeten Seitenzahlen sind **ungeprüfte Layoutbeispiele**; der Text in
+Anführungszeichen ist erfundener Demotext. Vor Abgabe durch geprüfte Belege
+ersetzen oder die Demonstration entfernen.
+
 ## Kleine LaTeX-Merkhilfe
 
 | Zweck | Beispiel |

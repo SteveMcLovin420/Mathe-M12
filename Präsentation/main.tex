@@ -182,18 +182,63 @@
 \end{frame}
 
 \section{Quellen}
-\begin{frame}{Quellen im Vortrag sichtbar machen}
-  % QUELLEN-MINIBEISPIELE: Text hier später durch eure fachlichen Aussagen
-  % ersetzen. Keine Seitenzahlen erfinden; geprüfte Fundstellen verwenden.
+% ZITIERWERKSTATT: Alle folgenden Seitenangaben sind ungeprüfte Layoutbeispiele.
+\begin{frame}{Zitierwerkstatt: Seiten direkt am Beleg}
+  \begin{alertblock}{Nur eine Layoutdemonstration}
+    Beispielsätze und Seitenzahlen sind keine geprüften Quellenbelege.
+  \end{alertblock}
   \begin{itemize}
-    \item Pólya behandelt heuristisches Problemlösen\footcite{polya1945}.
-    \item Hintergrund zur Analysis\footcite{spivak2008}.
-    \item Seitenangabe: im Code z.\,B. \texttt{\textbackslash footcite[S.~23]\{schluessel\}}.
-    \item Direkte Zitate: \enquote{Wortlaut} plus Quelle und genaue Fundstelle.
+    \item Allgemeiner Verweis auf ein Buch\footcite{polya1945}.
+    \item Eine konkrete Seite\footcite[S.~23]{polya1945}.
+    \item Eine andere Stelle desselben Buches\footcite[S.~42]{polya1945}.
+    \item Ein zusammenhängender Seitenbereich\footcite[S.~10--12]{spivak2008}.
   \end{itemize}
-  \small Die Bücher sind reale Beispielquellen; die Unterrichtsplanung und
-  Rechnungen dieser Vorlage sind eigene Beispiele. Vor Abgabe relevante
-  Literatur auswählen und tatsächlich verwendete Stellen prüfen.
+\end{frame}
+
+\begin{frame}{Zitierwerkstatt: indirekt und direkt}
+  \small\textbf{Layoutdemo:} Seiten ungeprüft; kein Originalzitat.
+  \begin{itemize}
+    \item Sinngemäße Beispielaussage mit Vorsatz\footcite[vgl.][S.~23--25]{polya1945}.
+    \item Dasselbe mit einer zweiten Quelle\footcite[vgl.][S.~15]{spivak2008}.
+    \item \enquote{Erfundener Demotext für die Darstellung eines direkten Zitats.}%
+      \footcite[S.~23]{polya1945}
+  \end{itemize}
+  \medskip
+  \small Echte direkte Zitate benötigen den geprüften Originalwortlaut
+  und die tatsächliche Fundstelle.
+\end{frame}
+
+\begin{frame}{Zitierwerkstatt: mehrere Quellen und Spalten}
+  \small\textbf{Layoutdemo:} Alle Seitenangaben sind ungeprüft.
+  \medskip
+  \begin{columns}[T,onlytextwidth]
+    \begin{column}{0.47\textwidth}
+      \textbf{Gemeinsamer Beleg}
+      \par\medskip
+      Eine Aussage kann zwei Bücher in einer Fußnote nennen%
+      \footcite{polya1945,spivak2008}.
+    \end{column}
+    \begin{column}{0.47\textwidth}
+      \textbf{Unterschiedliche Fundstellen}
+      \par\medskip
+      Jedes Buch bekommt seinen eigenen Seitenbeleg%
+      \footcite[S.~23]{polya1945}\footcite[S.~10--12]{spivak2008}.
+    \end{column}
+  \end{columns}
+  \medskip
+  \small Die Quellen stehen auch bei Spalten unten auf der gesamten Folie.
+\end{frame}
+
+\begin{frame}[fragile]{Zitierwerkstatt: so setzt ihr die Fußmarken}
+  \begin{verbatim}
+Aussage\footcite{polya1945}.
+Aussage\footcite[S.~23]{polya1945}.
+Aussage\footcite[S.~23--25]{polya1945}.
+Aussage\footcite[vgl.][S.~23--25]{polya1945}.
+Aussage\footcite{polya1945,spivak2008}.
+  \end{verbatim}
+  \small Buchdaten in \texttt{literatur.bib}; Fundstellen direkt im Text.
+  Die vollständigen Einträge folgen im Literaturverzeichnis.
 \end{frame}
 
 % LITERATUR: BibTeX erzeugt die Liste automatisch aus den zitierten Einträgen.

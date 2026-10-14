@@ -203,27 +203,54 @@ lässt sich mit Pólyas Problemlöseheuristik verbinden\footcite{polya1945}.
   \item Gemeinsam: Unterrichtsplanung, Überarbeitung und Quellenkontrolle.
 \end{itemize}
 
-\section{Wissenschaftliches Zitieren: Minimalbeispiele}
-% Nicht einfach ein Literaturverzeichnis anhängen: Aussagen im Text belegen!
-Ein Quellenbeleg erscheint als Fußnote\footcite{polya1945}; mehrere Quellen
-können in derselben Fußnote stehen\footcite{polya1945,spivak2008}.
-Die Quellenverwaltung ist unabhängig von der
-Formulierung eures Texts.
+\clearpage
+\section{Zitierwerkstatt: Fußnoten in Aktion}
+\label{sec:zitierdemo}
+\textbf{Layoutdemonstration:} Die folgenden Beispielsätze und Seitenzahlen
+zeigen ausschließlich das Zitiersystem. Die Seiten sind nicht als Fundstellen
+geprüft; auch der Text in Anführungszeichen ist kein Originalzitat.
+Vor der Abgabe diese Demonstration entfernen oder durch belegte Inhalte ersetzen.
 
-Ein direktes Zitat steht in \enquote{deutschen Anführungszeichen} und braucht
-einen überprüften Wortlaut sowie eine genaue Fundstelle. Diese Formulierung
-zeigt nur die Schreibweise der Anführungszeichen, kein Literaturzitat.
-Für eine Seitenangabe lautet die Syntax:
+\subsection{Einzelne Seiten und Seitenbereiche}
+Ein allgemeiner Literaturhinweis braucht keine Seitenangabe: Hier steht ein
+Demoverweis auf das gesamte Buch\footcite{polya1945}.
+
+Für eine konkrete Stelle steht die Seite in derselben Fußnote: Diese
+Beispielaussage verweist auf eine einzelne Seite\footcite[S.~23]{polya1945}.
+Ein zweiter Beleg desselben Buches kann eine andere Fundstelle nennen,
+ohne einen zweiten Bibliothekseintrag anzulegen\footcite[S.~42]{polya1945}.
+
+Ein zusammenhängender Abschnitt lässt sich mit einem Seitenbereich
+angeben\footcite[S.~23--25]{polya1945}. Dasselbe funktioniert für eine
+andere Quelle\footcite[S.~10--12]{spivak2008}.
+
+\subsection{Indirekt, direkt und mehrere Quellen}
+Eine sinngemäß wiedergegebene Aussage kann mit einem vorangestellten
+\enquote{vgl.} belegt werden\footcite[vgl.][S.~23--25]{polya1945}.
+Auch beim zweiten Buch bleibt die Schreibweise gleich\footcite[vgl.][S.~15]{spivak2008}.
+
+\enquote{Dieser erfundene Demotext zeigt nur die Gestaltung eines direkten
+Zitats.}\footcite[S.~23]{polya1945}
+Ein echtes direktes Zitat benötigt den überprüften Originalwortlaut und die
+tatsächliche Fundstelle.
+
+Eine Fußmarke kann mehrere Bücher zusammen belegen\footcite{polya1945,spivak2008}.
+Haben die Bücher unterschiedliche Fundstellen, erhält jedes einen eigenen
+Beleg\footcite[S.~23]{polya1945}\footcite[S.~10--12]{spivak2008}.
+So ist eindeutig, welche Seiten zu welchem Werk gehören.
+
+\subsection{Die Befehle zum Nachbauen}
 \begin{quote}
-  \small\verb|\footcite[S.~23]{schluessel}|
+\small
+\verb|\footcite{polya1945}|\\
+\verb|\footcite[S.~23]{polya1945}|\\
+\verb|\footcite[S.~23--25]{polya1945}|\\
+\verb|\footcite[vgl.][S.~23--25]{polya1945}|\\
+\verb|\footcite{polya1945,spivak2008}|
 \end{quote}
-Für ein indirektes Zitat mit Seitenbereich:
-\begin{quote}
-  \small\verb|\footcite[vgl.][S.~23--25]{schluessel}|
-\end{quote}
-% BEARBEITEN: echten Schlüssel und tatsächlich geprüfte Seiten einsetzen.
-Bei Internetquellen Autor/Organisation, Seitentitel, URL und Abrufdatum
-erfassen; ein auskommentiertes Muster steht in \texttt{literatur.bib}.
+Die vollständigen Buchangaben stehen automatisch im Literaturverzeichnis.
+Neue Literatur wird in \texttt{literatur.bib} hinterlegt; die genaue Fundstelle
+gehört jeweils an die Zitierstelle im Text.
 
 \section{Fazit und Reflexion}
 % BEARBEITEN: Frage aus Einleitung beantworten, Grenzen und Ausblick nennen.

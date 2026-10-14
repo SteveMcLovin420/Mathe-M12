@@ -6,6 +6,7 @@
 \usepackage[ngerman]{babel}
 \usepackage{lmodern}
 \usepackage[a4paper,margin=2.5cm]{geometry}
+\usepackage[bottom]{footmisc} % Fußnoten unten auf der zugehörigen Seite
 \usepackage{setspace}
 \onehalfspacing
 \usepackage{amsmath,amssymb,amsthm}
@@ -13,6 +14,16 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage[authoryear,round]{natbib}
+\newcommand{\quellenfussnote}[1]{\footnote{#1}}
+% QUELLEN: Einheitlicher Fußnotenbefehl in Hausarbeit und Präsentation.
+% Eine optionale Angabe = Fundstelle; zwei = Vorsatz (z. B. vgl.) + Fundstelle.
+\usepackage{xparse}
+\NewDocumentCommand{\footcite}{o o m}{%
+  \quellenfussnote{%
+    \IfNoValueTF{#1}{\citealp{#3}}{%
+      \IfNoValueTF{#2}{\citealp[#1]{#3}}{\citealp[#1][#2]{#3}}}%
+  }%
+}
 \usepackage{csquotes}
 \usepackage[hidelinks]{hyperref}
 \AtBeginDocument{\renewcommand{\refname}{Literaturverzeichnis}}
@@ -76,14 +87,13 @@ an der Tafel mit einer anschließenden Partneraufgabe.
 \textbf{Fettdruck} hebt sparsam einen Begriff hervor; \emph{Hervorhebung}
 betont eine Formulierung. Sonderzeichen schreiben: \%, \&, \_, \#.
 Eine Fußnote\footnote{Fußnoten eignen sich für ergänzende Hinweise.
-Quellen zu tragenden Aussagen gehören unmittelbar an die betreffende Stelle.}
+Quellenbelege werden mit dem Befehl \texttt{\textbackslash footcite} gesetzt.}
 zeigt eine optionale Ergänzung.
 
 \section{Mathematische Grundlagen}
 \label{sec:grundlagen}
-% QUELLEN: \citet nennt den Autor im Satz; \citep setzt Autor/Jahr in Klammern.
-Ein Beispiel für einen Literaturverweis im Satz: \citet{spivak2008}
-behandelt Grundlagen der Analysis. Die folgenden Rechnungen sind eigene
+% QUELLEN: Die Fußmarke steht unmittelbar an der belegten Aussage.
+Spivaks Buch behandelt Grundlagen der Analysis\footcite{spivak2008}. Die folgenden Rechnungen sind eigene
 Minimalbeispiele und kein wörtliches Zitat aus diesem Buch.
 
 \begin{definition}[Nullstelle]
@@ -181,9 +191,9 @@ quadratischen Terms und erklären deren Bedeutung am Graphen.
   \item \textbf{Abschluss (5 Minuten):} Nullproduktregel in eigenen Worten erklären.
 \end{enumerate}
 Die Anregung, einen Lösungsweg zu planen und das Ergebnis rückblickend zu prüfen,
-lässt sich mit der Problemlöseheuristik bei \citet{polya1945} verbinden.
+lässt sich mit Pólyas Problemlöseheuristik verbinden\footcite{polya1945}.
 % Vor Abgabe konkrete Fundstelle in eurer Ausgabe prüfen und ergänzen:
-% \citep[vgl.][S.~23--25]{polya1945} (Seiten hier nur Syntax-Beispiel!).
+% \footcite[vgl.][S.~23--25]{polya1945} (Seiten hier nur Syntax-Beispiel!).
 
 \subsection{Zusammenarbeit zu zweit}
 % BEARBEITEN: tatsächliche Beiträge nennen; beide lesen die gesamte Endfassung.
@@ -195,9 +205,9 @@ lässt sich mit der Problemlöseheuristik bei \citet{polya1945} verbinden.
 
 \section{Wissenschaftliches Zitieren: Minimalbeispiele}
 % Nicht einfach ein Literaturverzeichnis anhängen: Aussagen im Text belegen!
-Ein Verweis in Klammern lautet \citep{polya1945}; mehrere Quellen zusammen
-werden mit \verb|\citep{polya1945,spivak2008}| gesetzt
-\citep{polya1945,spivak2008}. Die Quellenverwaltung ist unabhängig von der
+Ein Quellenbeleg erscheint als Fußnote\footcite{polya1945}; mehrere Quellen
+können in derselben Fußnote stehen\footcite{polya1945,spivak2008}.
+Die Quellenverwaltung ist unabhängig von der
 Formulierung eures Texts.
 
 Ein direktes Zitat steht in \enquote{deutschen Anführungszeichen} und braucht
@@ -205,11 +215,11 @@ einen überprüften Wortlaut sowie eine genaue Fundstelle. Diese Formulierung
 zeigt nur die Schreibweise der Anführungszeichen, kein Literaturzitat.
 Für eine Seitenangabe lautet die Syntax:
 \begin{quote}
-  \small\verb|\citep[S.~23]{schluessel}|
+  \small\verb|\footcite[S.~23]{schluessel}|
 \end{quote}
 Für ein indirektes Zitat mit Seitenbereich:
 \begin{quote}
-  \small\verb|\citep[vgl.][S.~23--25]{schluessel}|
+  \small\verb|\footcite[vgl.][S.~23--25]{schluessel}|
 \end{quote}
 % BEARBEITEN: echten Schlüssel und tatsächlich geprüfte Seiten einsetzen.
 Bei Internetquellen Autor/Organisation, Seitentitel, URL und Abrufdatum

@@ -2,7 +2,8 @@
 
 Zwei unabhängig bearbeitbare LaTeX-Vorlagen mit dem **austauschbaren
 Beispielthema quadratische Funktionen**. Beide verwenden deutsche Sprache,
-Autor-Jahr-Zitate und ein automatisch erzeugtes Literaturverzeichnis.
+Quellenfußnoten mit hochgestellten Fußmarken und ein automatisch erzeugtes
+Literaturverzeichnis.
 Kommentare mit `% BEARBEITEN`, `% QUELLEN` usw. erklären die Änderungen direkt
 im Code. Ein Kommentar beginnt mit `%` und erscheint nicht im PDF.
 
@@ -50,24 +51,36 @@ Dateien gleich halten. Die Vorlage nutzt **natbib + BibTeX**, nicht Biber.
 1. In `literatur.bib` einen Eintrag anlegen. Kopiermuster für Buch, Artikel und
    Webseite stehen dort als Kommentare. Der Schlüssel (z. B. `polya1945`) ist
    frei wählbar, muss eindeutig sein und exakt zum Zitat passen.
-2. Im Text die passende Zitierform verwenden:
+2. In beiden Dokumenten denselben Befehl unmittelbar an der belegten Stelle
+   setzen. Er erzeugt eine hochgestellte Fußmarke und den Kurzbeleg (Autor, Jahr,
+   gegebenenfalls Seite) unten auf der Seite bzw. Folie:
 
 ```tex
-\citet{polya1945} beschreibt ...          % Autor (Jahr) im Satz
-... wird beschrieben \citep{polya1945}.  % (Autor, Jahr)
-\citep[S.~23]{polya1945}                 % Quelle mit Seite
-\citep[vgl.][S.~23--25]{polya1945}        % Indirektes Zitat mit Seiten
-\citep{polya1945,spivak2008}              % Mehrere Quellen
-\enquote{Geprüfter Wortlaut} ...         % Direktes Zitat + Quelle/Fundstelle
+Aussage\footcite{polya1945}.
+Aussage\footcite[S.~23]{polya1945}.          % Mit Fundstelle
+Aussage\footcite[vgl.][S.~23--25]{polya1945}. % Indirektes Zitat
+Aussage\footcite{polya1945,spivak2008}.      % Mehrere Quellen, eine Fußnote
+\enquote{Geprüfter Wortlaut}\footcite[S.~23]{polya1945}.
 ```
 
 Die Seitenzahlen oben zeigen nur die Syntax; sie sind **keine geprüften
 Fundstellen**. Direkte Zitate wortgetreu übernehmen, indirekte Aussagen mit
 eigenen Worten formulieren und ebenfalls belegen. Quellen unmittelbar auf der
-betreffenden Folie bzw. bei Abbildungen nennen. Ein Literaturverzeichnis allein
+betreffenden Folie bzw. bei Abbildungen mit einer Fußmarke belegen. Ein Literaturverzeichnis allein
 ersetzt keine Belege im Text. Webseiten benötigen eine konkrete URL und ein
 Abrufdatum. Vorgaben eurer Einrichtung zum Zitierstil gehen vor; `plainnat`
-ist hier ein allgemeiner Ausgangspunkt, kein zugesicherter Spezialstil.
+formatiert hier die Kurzbelege und das Literaturverzeichnis.
+
+Die Hausarbeit nummeriert Fußnoten fortlaufend (auch ergänzende Hinweise zählen
+mit). Auch die Präsentation nummeriert fortlaufend; mit `\footnote[frame]` stehen die
+Quellen auch bei Spalten unten auf der gesamten Folie. Das Literaturverzeichnis
+enthält in beiden Dokumenten die vollständigen Angaben.
+`\footcite` ist in beiden Vorlagen gleich definiert, nur die Platzierung der
+Fußnote berücksichtigt die jeweilige Dokumentklasse.
+
+Die `.bib`-Datei ist die Quellenbibliothek des jeweiligen Dokuments. Einen
+Bibliothekseintrag allein anzulegen erzeugt noch keine Fußmarke: Dafür muss
+`\footcite{schluessel}` an der gewünschten Textstelle stehen.
 
 3. `make` erneut ausführen. `latexmk` startet automatisch PDFLaTeX, BibTeX und
    nötige Folgeläufe. Nur zitierte Quellen erscheinen in der Liste.

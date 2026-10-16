@@ -12,12 +12,12 @@ endif
 all: praesentation hausarbeit
 
 praesentation:
-	cd 'Präsentation' && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex
+	cd 'Präsentation (LaTeX)' && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex
 
 hausarbeit:
-	cd Hausarbeit && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex
+	cd 'Hausarbeit (LaTeX)' && latexmk -pdf -interaction=nonstopmode -halt-on-error -file-line-error -outdir=build main.tex
 
 # Entfernt nur generierte Dateien in den beiden build-Ordnern.
 clean:
-	cd 'Präsentation' && latexmk -C -outdir=build main.tex
-	cd Hausarbeit && latexmk -C -outdir=build main.tex
+	cd 'Präsentation (LaTeX)' && latexmk -C -outdir=build main.tex
+	cd 'Hausarbeit (LaTeX)' && latexmk -C -outdir=build main.tex

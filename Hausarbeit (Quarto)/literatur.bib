@@ -1,0 +1,59 @@
+% QUELLEN: Einträge erhalten eindeutige Schlüssel, z. B. polya1945.
+% In main.qmd: Aussage.^[@polya1945, S. 23] für einen Beleg als Fußnote.
+% Seitenzahlen an der konkreten Stelle im Text angeben und vorher prüfen.
+% Nach Änderungen quarto preview main.qmd bzw. quarto render main.qmd ausführen.
+% Reale Beispielquellen: nur tatsächlich gelesene/verwendete Literatur übernehmen.
+
+@book{polya1945,
+  author    = {P{\'o}lya, George},
+  title     = {How to Solve It: A New Aspect of Mathematical Method},
+  year      = {1945},
+  publisher = {Princeton University Press},
+  address   = {Princeton}
+}
+
+@book{spivak2008,
+  author    = {Spivak, Michael},
+  title     = {Calculus},
+  edition   = {4},
+  year      = {2008},
+  publisher = {Publish or Perish},
+  address   = {Houston}
+}
+
+% MUSTER AKTIVIEREN: Prozentzeichen entfernen, ALLE Platzhalter ersetzen
+% und vor book/article/misc ein At-Zeichen setzen (wie bei den Einträgen oben).
+% BUCH-MUSTER:
+% Mehrere Autoren mit and trennen, nicht mit Komma.
+% book{meinbuch,
+%   author    = {Nachname, Vorname and Zweitnachname, Vorname},
+%   title     = {Titel des Buches},
+%   year      = {2026},
+%   publisher = {Verlag},
+%   edition   = {2}
+% }
+
+% ARTIKEL-MUSTER: Quarto unterstützt auch doi = {10.xxxx/xxxx}.
+% Das Muster verwendet alternativ einen Link im Feld note.
+% article{meinartikel,
+%   author  = {Nachname, Vorname},
+%   title   = {Titel des Artikels},
+%   journal = {Zeitschrift},
+%   year    = {2026},
+%   volume  = {12},
+%   number  = {3},
+%   pages   = {10--20},
+%   note    = {DOI: \url{https://doi.org/GEPRUEFTE-DOI}}
+% }
+
+% WEBSEITEN-MUSTER: doppelte Klammern erhalten den Organisationsnamen.
+% Für eine Webseite kann Quarto auch @online mit url und urldate verarbeiten.
+% misc{meinewebquelle,
+%   author       = {{Name der Organisation}},
+%   title        = {Titel der konkreten Seite},
+%   year         = {2026},
+%   howpublished = {\url{https://example.org/konkrete-seite}},
+%   note         = {Abgerufen am TT.MM.JJJJ}
+% }
+% Bei fehlendem Datum nicht eines erfinden: year = {o.\,J.}.
+% Akronyme im Titel mit Klammern schützen: title = {Arbeiten mit {LaTeX}}.

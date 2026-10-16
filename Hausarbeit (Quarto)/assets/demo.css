@@ -1,0 +1,28 @@
+/* BEARBEITEN: Farben und Abstände für beide Browser-Beispiele. */
+:root { --demo-green: #176b4b; --demo-ink: #17352c; }
+.demo-widget { border: 1px solid #b6cec1; border-radius: 14px; padding: 1rem; margin: .7rem 0; background: #f5faf7; color: #17352c; text-align: left; font-size: 1rem; }
+.demo-widget * { box-sizing: border-box; }
+.demo-widget h3 { font-size: 1.15em; margin: 0 0 .5rem; color: #17352c; }
+.demo-widget button, .demo-widget input { font: inherit; }
+.demo-widget button { background: #176b4b; color: white; border: 2px solid transparent; border-radius: 7px; padding: .4em .7em; cursor: pointer; margin: .15em; }
+.demo-widget button:hover { background: #104c36; }
+.demo-widget :focus-visible, details summary:focus-visible { outline: 3px solid #b45a00; outline-offset: 3px; }
+.demo-widget label { display: inline-flex; gap: .4em; align-items: center; flex-wrap: wrap; margin: .2rem .8rem .2rem 0; }
+.demo-widget input[type=range] { width: 115px; accent-color: #176b4b; }
+.demo-widget input[type=text] { width: 6em; padding: .35em; border: 1px solid #647b70; border-radius: 4px; background: white; color: #17352c; }
+.demo-widget output { font-variant-numeric: tabular-nums; }
+.demo-widget svg { display: block; width: 100%; height: auto; max-height: 275px; background: white; border-radius: 8px; }
+.demo-widget .graph-summary { margin: .4em 0; min-height: 2.6em; }
+.demo-widget [data-feedback] { min-height: 1.8em; margin: .4em 0; font-weight: 600; }
+.demo-widget .timer-display { font-size: 2.2em; font-variant-numeric: tabular-nums; margin-right: .5em; }
+.demo-widget fieldset { border: 0; padding: 0; margin: 0; }
+.demo-widget legend { font-weight: 600; margin-bottom: .5em; }
+details.demo-solution { border-left: 4px solid #176b4b; padding: .6em 1em; background: #f5faf7; margin: .7em 0; }
+details.demo-solution summary { cursor: pointer; font-weight: 600; }
+.reveal { --r-heading-color: #176b4b; --r-link-color: #176b4b; }
+.reveal .demo-widget { font-size: 23px; }
+.reveal .demo-widget svg { max-height: 255px; }
+.reveal details.demo-solution { font-size: .78em; }
+.reveal .small { font-size: .68em; }
+@media (max-width: 600px) { .demo-widget label { display: flex; } }
+@media print { .demo-widget button, .demo-widget input { display: none; } .demo-widget { break-inside: avoid; } }

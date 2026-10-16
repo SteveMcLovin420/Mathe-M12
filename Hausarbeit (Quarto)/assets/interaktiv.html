@@ -1,0 +1,93 @@
+<script>
+// Browser-Interaktionen ohne Python, R oder zusätzliche JavaScript-Bibliotheken.
+(() => {
+  "use strict";
+  const fmt = n => new Intl.NumberFormat("de-DE", { maximumFractionDigits: 3 }).format(n);
+  const ns = "http://www.w3.org/2000/svg";
+  document.querySelectorAll("[data-parabola]").forEach((box, index) => {
+    const inputs = [...box.querySelectorAll("input[type=range]")];
+    const svg = box.querySelector("svg");
+    const create = (tag, attrs) => {
+      const el = document.createElementNS(ns, tag);
+      Object.entries(attrs).forEach(([key, value]) => el.setAttribute(key, value));
+      return el;
+    };
+    const sx = x => 320 + x * 40, sy = y => 150 - y * 20;
+    const update = () => {
+      const [a, b, c] = inputs.map(input => Number(input.value));
+      inputs.forEach(input => box.querySelector(`[data-value="${input.name}"]`).textContent = fmt(Number(input.value)));
+      const d = b*b - 4*a*c;
+      const terms = [[a, "x²"], [b, "x"], [c, ""]].filter(([n]) => n !== 0);
+      const formula = terms.map(([n, variable], i) => (n < 0 ? (i ? " − " : "−") : (i ? " + " : "")) + (variable && Math.abs(n) === 1 ? "" : fmt(Math.abs(n))) + variable).join("") || "0";
+      box.querySelector("[data-formula]").textContent = `f(x) = ${formula}`;
+      let roots = [], message;
+      if (a === 0) {
+        if (b !== 0) { roots = [-c/b]; message = `Lineare Funktion; Nullstelle x = ${fmt(roots[0])}.`; }
+        else message = c === 0 ? "Nullfunktion: Jede reelle Zahl ist eine Nullstelle." : "Konstante Funktion ohne Nullstelle.";
+      } else {
+        if (d > 0) { roots = [(-b-Math.sqrt(d))/(2*a), (-b+Math.sqrt(d))/(2*a)].sort((x,y) => x-y); message = `Zwei reelle Nullstellen: ${roots.map(fmt).join(" und ")}.`; }
+        else if (d === 0) { roots = [-b/(2*a)]; message = `Eine doppelte Nullstelle: ${fmt(roots[0])}.`; }
+        else message = "Keine reelle Nullstelle.";
+        const h = -b/(2*a), k = a*h*h + b*h + c;
+        message += ` D = ${fmt(d)}. Scheitel S(${fmt(h)} | ${fmt(k)}).`;
+      }
+      box.querySelector("[data-summary]").textContent = message;
+      svg.replaceChildren();
+      const defs = create("defs", {}), clip = create("clipPath", {id: `plot-clip-${index}`});
+      clip.append(create("rect", {x:0, y:0, width:640, height:300})); defs.append(clip); svg.append(defs);
+      for (let x=-8; x<=8; x++) svg.append(create("line", {x1:sx(x), y1:0, x2:sx(x), y2:300, stroke: x===0 ? "#647b70" : "#e2ebe5"}));
+      for (let y=-7; y<=7; y++) svg.append(create("line", {x1:0, y1:sy(y), x2:640, y2:sy(y), stroke: y===0 ? "#647b70" : "#e2ebe5"}));
+      for (let x=-6; x<=6; x+=2) { const label=create("text", {x:sx(x)+4, y:168, "font-size":14, fill:"#17352c"}); label.textContent=x; svg.append(label); }
+      for (const [text,x,y] of [["x",620,143],["f(x)",330,18],["6",299,34],["−6",290,274]]) { const label=create("text", {x,y,"font-size":14,fill:"#17352c"});label.textContent=text;svg.append(label); }
+      let path="";
+      for(let i=0;i<=640;i++){const x=(i-320)/40;path+=`${i===0?"M":"L"}${i},${sy(a*x*x+b*x+c)} `;}
+      const plot = create("g", {"clip-path":`url(#plot-clip-${index})`});
+      plot.append(create("path", {d:path,fill:"none",stroke:"#176b4b","stroke-width":3}));
+      roots.filter(x => x>=-8 && x<=8).forEach(x=>plot.append(create("circle", {cx:sx(x),cy:sy(0),r:6,fill:"#c24b16"})));
+      svg.append(plot);
+    };
+    inputs.forEach(input=>input.addEventListener("input",update));
+    box.querySelectorAll("[data-preset]").forEach(button=>button.addEventListener("click",()=>{
+      const values=button.dataset.preset.split(",");inputs.forEach((input,i)=>input.value=values[i]);update();
+    }));
+    update();
+  });
+  document.querySelectorAll("[data-quiz]").forEach(box=>{
+    box.querySelectorAll("[data-answer]").forEach(button=>button.addEventListener("click",()=>{
+      box.querySelector("[data-feedback]").textContent = button.dataset.answer === "correct"
+        ? "Richtig! x² − 4x + 3 = (x − 1)(x − 3), also x = 1 oder x = 3."
+        : "Noch einmal: Gesucht sind zwei Zahlen mit Summe 4 und Produkt 3. Nutze anschließend die Nullproduktregel.";
+    }));
+    box.querySelector("[data-reset]").addEventListener("click",()=>box.querySelector("[data-feedback]").textContent="");
+  });
+  document.querySelectorAll("[data-root-check]").forEach(form=>{
+    form.addEventListener("submit",event=>{
+      event.preventDefault();
+      const raw=[...form.querySelectorAll("input")].map(input=>input.value.trim().replace(",","."));
+      const values=raw.map(Number).sort((a,b)=>a-b);
+      form.querySelector("[data-feedback]").textContent=raw.some(v=>v==="") || !values.every(Number.isFinite)
+        ? "Bitte gib zwei gültige Zahlen ein."
+        : Math.abs(values[0]-2)<1e-8 && Math.abs(values[1]-3)<1e-8
+        ? "Richtig! (x − 2)(x − 3) = 0. Beide Werte ergeben bei der Probe null."
+        : "Das passt noch nicht. Welche zwei Zahlen haben Summe 5 und Produkt 6?";
+    });
+    form.addEventListener("reset",()=>form.querySelector("[data-feedback]").textContent="");
+  });
+  document.querySelectorAll("[data-timer]").forEach(box=>{
+    let remaining=300000, deadline=null, interval=null;
+    const display=box.querySelector("[data-time]");
+    const start=box.querySelector("[data-start]");
+    const paint=()=>{const sec=Math.ceil(remaining/1000);display.textContent=`${Math.floor(sec/60)}:${String(sec%60).padStart(2,"0")}`;};
+    const pause=()=>{if(deadline!==null)remaining=Math.max(0,deadline-performance.now());clearInterval(interval);interval=null;deadline=null;start.textContent="Start / Weiter";paint();};
+    const tick=()=>{remaining=Math.max(0,deadline-performance.now());paint();if(remaining===0){pause();box.querySelector("[data-feedback]").textContent="Die Arbeitszeit ist vorbei. Vergleicht eure Ergebnisse.";}};
+    start.addEventListener("click",()=>{if(interval!==null || remaining<=0)return;deadline=performance.now()+remaining;interval=setInterval(tick,200);start.textContent="Läuft …";});
+    box.querySelector("[data-pause]").addEventListener("click",pause);
+    box.querySelector("[data-reset]").addEventListener("click",()=>{pause();remaining=300000;box.querySelector("[data-feedback]").textContent="";paint();});
+    paint();
+  });
+  // Reveal darf Pfeiltasten in Reglern und Eingabefeldern nicht als Folienwechsel behandeln.
+  document.querySelectorAll(".demo-widget").forEach(box=>box.addEventListener("keydown",event=>{
+    if(event.target.matches("input, button, select, textarea"))event.stopPropagation();
+  }));
+})();
+</script>

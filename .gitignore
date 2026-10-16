@@ -13,3 +13,11 @@
 *.toc
 *.vrb
 *.pdf
+
+# Generierte Quarto-Ausgaben
+**/.quarto/
+**/*_files/
+**/main.html
+
+# Beim fehlgeschlagenen Quarto-PDF-Bau übrig gebliebene Zwischenquelle
+Hausarbeit (Quarto)/main.tex

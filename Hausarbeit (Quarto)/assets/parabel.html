@@ -1,0 +1,15 @@
+```{=html}
+<div class="demo-widget" data-parabola>
+  <h3>Parabel-Labor</h3>
+  <div>
+    <label>a <input aria-label="Parameter a" name="a" type="range" min="-3" max="3" step="0.25" value="1"><output data-value="a">1</output></label>
+    <label>b <input aria-label="Parameter b" name="b" type="range" min="-6" max="6" step="0.25" value="-4"><output data-value="b">−4</output></label>
+    <label>c <input aria-label="Parameter c" name="c" type="range" min="-5" max="5" step="0.25" value="3"><output data-value="c">3</output></label>
+  </div>
+  <p><strong data-formula>f(x) = x² − 4x + 3</strong></p>
+  <svg viewBox="0 0 640 300" role="img" aria-label="Interaktiver Funktionsgraph, x von −8 bis 8, y von −7,5 bis 7,5"></svg>
+  <p data-summary class="graph-summary" aria-live="polite"></p>
+  <div><button type="button" data-preset="1,-4,3">Zwei Nullstellen</button><button type="button" data-preset="1,-4,4">Doppelte Nullstelle</button><button type="button" data-preset="1,0,1">Keine Nullstelle</button><button type="button" data-preset="1,-4,3">Zurücksetzen</button></div>
+  <noscript>Für die Regler JavaScript aktivieren. Beispiel: x² − 4x + 3 hat die Nullstellen 1 und 3.</noscript>
+</div>
+```

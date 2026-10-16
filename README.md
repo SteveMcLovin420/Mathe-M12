@@ -98,8 +98,61 @@ eine passende CSL-Datei eingebunden werden.
 **GitHub Desktop:** Nach Änderungen `Fetch origin` und gegebenenfalls
 `Pull origin` wählen; erstmals das Repository klonen. Danach im lokalen
 Projektordner die Vorschau starten. Ein Push aktualisiert die Quelldateien auf
-GitHub; eine öffentlich erreichbare Webseite würde zusätzlich eine
-Veröffentlichung etwa über GitHub Pages benötigen.
+GitHub und startet für Änderungen an der Quarto-Präsentation den Pages-Workflow.
+Die erstmalige Pages-Aktivierung ist unten beschrieben.
+
+## QR-Code und eigene Experimentierseite
+
+`Präsentation (Quarto)` ist jetzt auch ein kleines Quarto-Website-Projekt:
+
+| Datei | Zweck | Webadresse nach der Aktivierung |
+| --- | --- | --- |
+| `index.qmd` | Übersicht mit QR-Code und Links | `/Mathe-M12/` |
+| `main.qmd` | Vortrag mit eigener QR-Folie | `/Mathe-M12/main.html` |
+| `aufgaben.qmd` | Mobile Experimentierseite für die Zuhörer | `/Mathe-M12/aufgaben.html` |
+
+Der QR-Code führt direkt zu
+`https://stevemclovin420.github.io/Mathe-M12/aufgaben.html`.
+Die PNG- und SVG-Dateien liegen unter `assets/mitmachen-qr.*` und können
+auch in Arbeitsblättern oder anderen Präsentationen verwendet werden.
+Eine Änderung der Zieladresse erfordert einen neuen QR-Code.
+
+**Lokal öffnen:** Im Präsentationsordner `quarto preview` ausführen.
+Quarto zeigt die lokale Adresse an; alternativ mit festem Port:
+
+```sh
+quarto preview --port 3000
+```
+
+Danach die angezeigte Adresse im Browser öffnen. `quarto preview main.qmd`
+öffnet weiterhin gezielt den Vortrag. Der QR-Code enthält bewusst die feste
+Online-Adresse; localhost auf dem Smartphone würde auf das Smartphone selbst
+verweisen. Solange Pages nicht aktiviert ist, zum Testen die lokale Vorschau
+auf dem Laptop verwenden.
+
+### GitHub Pages einmal aktivieren
+
+1. Unter <https://github.com/SteveMcLovin420/Mathe-M12/settings/pages>
+   im Bereich **Build and deployment → Source** die Option **GitHub Actions**
+   auswählen. Das Repository muss dafür nicht öffentlich gemacht werden.
+   GitHub Pages aus privaten Repositories benötigt einen dafür geeigneten
+   Tarif, bei persönlichen Konten etwa GitHub Pro. Keine Tarif- oder
+   Sichtbarkeitsänderung ist Teil dieser Einrichtung.
+2. Unter **Actions → Quarto auf GitHub Pages** den Workflow starten
+   (**Run workflow**) oder einen fehlgeschlagenen Lauf erneut ausführen.
+3. Nach erfolgreichem Deploy die Online-Adresse öffnen und den QR-Code
+   einmal auf einem Smartphone mit mobilen Daten testen.
+
+Ab dann baut und veröffentlicht der Workflow bei Änderungen an
+`Präsentation (Quarto)` auf `main` automatisch die drei Seiten. Zusätzlich
+kann er jederzeit manuell gestartet werden. Der Workflow baut mit Quarto
+1.8.27; auf dem Laptop ist keine zusätzliche Installation nötig.
+
+**Umfang der Veröffentlichung:** Nur die im Präsentationsordner gerenderte
+Website wird hochgeladen. Die Hausarbeiten und LaTeX-Vorlagen gehören nicht
+zum Pages-Artefakt. Das private Git-Repository bleibt privat; die freigegebene
+Pages-Webseite ist für die Zuhörer öffentlich zugänglich. Die Übungen
+übertragen keine Antworten und benötigen keine Anmeldung.
 
 ## Ausführliche LaTeX-Vorlagen
 

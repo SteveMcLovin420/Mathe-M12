@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: _site
+  render:
+    - index.qmd
+    - aufgaben.qmd
+    - main.qmd
+
+website:
+  title: "Mathe M12"
+  site-url: https://stevemclovin420.github.io/Mathe-M12/
+  navbar:
+    background: light
+    left:
+      - href: index.qmd
+        text: Übersicht
+      - href: aufgaben.qmd
+        text: Mitmachen
+      - href: main.qmd
+        text: Vortrag

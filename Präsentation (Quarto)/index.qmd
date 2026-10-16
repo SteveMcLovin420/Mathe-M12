@@ -1,0 +1,37 @@
+---
+title: "Mathematik zum Mitmachen"
+subtitle: "Quadratische Funktionen gemeinsam entdecken"
+lang: de
+format:
+  html:
+    theme: default
+    css: [assets/demo.css, assets/teilnehmen.css]
+    html-math-method: mathml
+    embed-resources: true
+    toc: false
+---
+
+::: {.intro-card}
+**Eine Gleichung. Viele Entdeckungen.**
+
+Wie verändern sich Parabeln? Wann haben sie zwei, eine oder keine Nullstelle?
+Probiert es selbst aus – direkt auf dem Smartphone oder Laptop.
+
+[Experiment starten](aufgaben.qmd){.btn .btn-success .btn-lg}
+[Vortrag öffnen](main.qmd){.btn .btn-outline-success .btn-lg}
+:::
+
+## So funktioniert die gemeinsame Übung
+
+1. **QR-Code scannen** oder die Experimentierseite direkt öffnen.
+2. **Regler bewegen**, eine Vermutung formulieren und am Graphen prüfen.
+3. **Quiz lösen** und die Ergebnisse gemeinsam besprechen.
+
+## Für die Zuhörer
+
+[![QR-Code zur Experimentierseite](assets/mitmachen-qr.png){width=280 height=280}](https://stevemclovin420.github.io/Mathe-M12/aufgaben.html)
+
+[stevemclovin420.github.io/Mathe-M12/aufgaben.html](https://stevemclovin420.github.io/Mathe-M12/aufgaben.html)
+
+Die Übung braucht keine Anmeldung. Rückmeldungen erscheinen auf eurem Gerät;
+Antworten werden nicht an die Vortragenden übertragen oder gespeichert.

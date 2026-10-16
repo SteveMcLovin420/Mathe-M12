@@ -1,0 +1,27 @@
+/* Nur für die Übersichts- und Experimentierseite, unabhängig vom Folienlayout. */
+:root { --bs-link-color: #176b4b; --bs-link-hover-color: #104c36; }
+#quarto-content { max-width: 1100px; margin: auto; }
+#title-block-header .title { color: #176b4b; letter-spacing: -.025em; }
+.intro-card { background: #edf6f0; border-radius: 16px; border: 1px solid #c7ded0; padding: 1.5rem; margin-bottom: 2rem; }
+.intro-card > p:first-child { font-size: 1.35rem; color: #17352c; }
+.intro-card .btn { margin: .3rem .4rem .2rem 0; white-space: normal; }
+h2 { color: #176b4b; margin-top: 2.4rem; }
+.demo-widget { padding: 1.2rem; }
+.demo-widget input[type=range] { width: clamp(115px, 19vw, 180px); min-height: 44px; }
+.demo-widget button, .demo-widget input[type=text] { min-height: 44px; }
+.demo-widget label { min-height: 44px; }
+.demo-widget [data-formula] { font-size: 1.2rem; }
+.demo-widget svg { max-height: none; }
+.demo-widget .graph-summary { line-height: 1.6; }
+.demo-solution summary { min-height: 44px; padding-top: .4rem; }
+.participation-note { font-size: .9rem; color: #52665b; margin: 2rem 0; }
+@media (max-width: 600px) {
+  .intro-card, .demo-widget { padding: 1rem; }
+  .demo-widget label { display: flex; flex-wrap: nowrap; width: 100%; gap: .7rem; margin-right: 0; }
+  .demo-widget input[type=range] { flex: 1; min-width: 0; width: auto; }
+  .demo-widget input[type=text] { width: 5em; margin-left: auto; }
+  .demo-widget output { min-width: 3em; text-align: right; }
+  .demo-widget svg text { font-size: 23px; }
+  .demo-widget button { margin-bottom: .4rem; }
+  .demo-widget { overflow-wrap: anywhere; }
+}

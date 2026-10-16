@@ -21,3 +21,6 @@
 
 # Beim fehlgeschlagenen Quarto-PDF-Bau übrig gebliebene Zwischenquelle
 Hausarbeit (Quarto)/main.tex
+
+# Quarto-Website wird durch GitHub Actions erzeugt
+**/_site/

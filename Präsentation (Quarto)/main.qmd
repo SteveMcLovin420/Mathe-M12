@@ -119,6 +119,31 @@ Also $x_1=1$ oder $x_2=3$.
 Erst c verändern: Wann berührt die Parabel die x-Achse? Dann a negativ setzen. Bei a=0 wird die Funktion linear; das Labor zeigt diesen Sonderfall ausdrücklich an. Die Achsengrenzen bleiben fest, damit Änderungen vergleichbar bleiben.
 :::
 
+## Jetzt seid ihr dran: QR-Code scannen
+
+::: {.columns}
+::: {.column width="42%"}
+[![QR-Code zur Experimentierseite](assets/mitmachen-qr.png){width=330 height=330}](https://stevemclovin420.github.io/Mathe-M12/aufgaben.html)
+:::
+::: {.column width="58%"}
+**Öffnet euer eigenes Parabel-Labor.**
+
+1. QR-Code mit der Smartphone-Kamera scannen.
+2. Parameter verändern und die Nullstellen beobachten.
+3. Quiz lösen und die Rechnung selbst prüfen.
+
+**Zeit:** etwa 3–5 Minuten. Keine Anmeldung nötig.
+:::
+:::
+
+[stevemclovin420.github.io/Mathe-M12/aufgaben.html](https://stevemclovin420.github.io/Mathe-M12/aufgaben.html){.small}
+
+::: notes
+Die Seite vor der Stunde einmal auf dem Smartphone mit mobilen Daten öffnen.
+Die Aufgaben funktionieren pro Gerät; es werden keine Antworten gesammelt.
+Wer keinen QR-Code scannen kann, nutzt die ausgeschriebene Adresse.
+:::
+
 ## Forscheraufträge
 
 ::: {.incremental}

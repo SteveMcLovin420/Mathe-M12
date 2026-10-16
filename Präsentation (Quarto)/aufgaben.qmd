@@ -1,0 +1,89 @@
+---
+title: "Dein Parabel-Labor"
+subtitle: "Verändern · Beobachten · Verstehen"
+lang: de
+format:
+  html:
+    theme: default
+    css: [assets/demo.css, assets/teilnehmen.css]
+    include-after-body: assets/interaktiv.html
+    html-math-method: mathml
+    embed-resources: true
+    toc: false
+---
+
+::: {.intro-card}
+**Entdecke, wann eine Parabel die x-Achse schneidet.**
+
+Du brauchst etwa **3–5 Minuten**. Bewege die Regler und beschreibe, was sich
+verändert. Du kannst jederzeit neu anfangen.
+:::
+
+## 1 · Experimentieren {#experiment}
+
+Starte mit **Zwei Nullstellen**. Verändere zunächst nur den Regler **c**:
+von $3$ auf $4$ und dann auf $5$.
+
+{{< include assets/parabel.html >}}
+
+**Was beobachtest du?** Wie viele Schnittpunkte mit der x-Achse gibt es jeweils?
+
+<details class="demo-solution">
+<summary>Hinweis und Erklärung öffnen</summary>
+
+Bei $c=3$ schneidet die Parabel die x-Achse zweimal, bei $c=4$ berührt sie
+die Achse einmal. Bei $c=5$ gibt es keinen Schnittpunkt mehr.
+
+Mit $a=1$ und $b=-4$ ist die Diskriminante $D=16-4c$: also $4$, $0$ und $-4$.
+
+</details>
+
+### Noch eine Entdeckung
+
+Wähle **Keine Nullstelle** und stelle danach $a=-1$ ein.
+Was passiert mit der Öffnungsrichtung und den Nullstellen?
+
+Der Graph zeigt einen festen Ausschnitt: $x$ von $-8$ bis $8$ und $y$ von
+$-7{,}5$ bis $7{,}5$. Nullstellen außerhalb dieses Ausschnitts stehen weiterhin
+im Ergebnistext. Bei $a=0$ ist die Funktion nicht mehr quadratisch.
+
+## 2 · Dein kurzer Check {#quiz}
+
+Wähle eine Antwort. Du bekommst sofort eine Erklärung und kannst es erneut versuchen.
+
+{{< include assets/quiz.html >}}
+
+## 3 · Selbst rechnen {#rechnen}
+
+Jetzt eine neue Funktion: $g(x)=x^2-5x+6$. Bestimme beide Nullstellen und gib
+sie ein. Die Reihenfolge ist egal.
+
+{{< include assets/nullstellen.html >}}
+
+<details class="demo-solution">
+<summary>Rechenhilfe anzeigen</summary>
+
+Suche zwei Zahlen mit Summe $5$ und Produkt $6$. Verwende danach die
+Nullproduktregel.
+
+</details>
+
+<details class="demo-solution">
+<summary>Musterlösung anzeigen</summary>
+
+$$g(x)=x^2-5x+6=(x-2)(x-3).$$
+
+Die Nullstellen sind $x_1=2$ und $x_2=3$. Die Probe liefert $g(2)=0$ und $g(3)=0$.
+
+</details>
+
+## Zurück in die gemeinsame Runde
+
+**Erklärt einander:** Woran erkennt ihr am Graphen und an der Diskriminante,
+wie viele reelle Nullstellen eine quadratische Funktion hat?
+
+[Zur Übersicht](index.qmd){.btn .btn-outline-success}
+
+::: {.participation-note}
+Ohne Anmeldung · Antworten bleiben auf deinem Gerät · Neuladen setzt die Übung zurück.
+:::

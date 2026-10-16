@@ -130,7 +130,16 @@ Online-Adresse; localhost auf dem Smartphone würde auf das Smartphone selbst
 verweisen. Solange Pages nicht aktiviert ist, zum Testen die lokale Vorschau
 auf dem Laptop verwenden.
 
-### GitHub Pages einmal aktivieren
+### GitHub Pages
+
+Die Website ist aktiviert; Build und Deployment waren am 16.10.2026 erfolgreich.
+
+- Übersicht: <https://stevemclovin420.github.io/Mathe-M12/>
+- Vortrag: <https://stevemclovin420.github.io/Mathe-M12/main.html>
+- Experimentierseite / QR-Ziel: <https://stevemclovin420.github.io/Mathe-M12/aufgaben.html>
+
+Das Repository ist öffentlich. Die folgenden Schritte dienen als Anleitung
+für eine spätere Neueinrichtung:
 
 1. Unter <https://github.com/SteveMcLovin420/Mathe-M12/settings/pages>
    im Bereich **Build and deployment → Source** die Option **GitHub Actions**
@@ -150,8 +159,8 @@ kann er jederzeit manuell gestartet werden. Der Workflow baut mit Quarto
 
 **Umfang der Veröffentlichung:** Nur die im Präsentationsordner gerenderte
 Website wird hochgeladen. Die Hausarbeiten und LaTeX-Vorlagen gehören nicht
-zum Pages-Artefakt. Das private Git-Repository bleibt privat; die freigegebene
-Pages-Webseite ist für die Zuhörer öffentlich zugänglich. Die Übungen
+zum Pages-Artefakt. Der Workflow verändert die Repository-Sichtbarkeit nicht.
+Aktuell sind das Repository und die Pages-Webseite öffentlich zugänglich. Die Übungen
 übertragen keine Antworten und benötigen keine Anmeldung.
 
 ## Ausführliche LaTeX-Vorlagen
